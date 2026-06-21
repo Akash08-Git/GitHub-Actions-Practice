@@ -1,27 +1,19 @@
-# What is the goal of your workflow
-# Goal: Whenever someone changes the python code, 
-# the linter will check if the sytax, format, indentation (Linting) is correct or not
-name: Auto Linter
+# Workflow [No indentation required for naming the workflow]
+name: Hello
 
+# On tells when the workflow should run (Give indentation by tab)
 on:
-  push:
-    paths: "*.py"
+  workflow_dispatch: 
+
+# Job tells what the workflow should do, there can be one or more than one jobs, hence we write Jobs
+# jobs is an object so needs indentation
 
 jobs:
-  code-linting:
+  # 1st Job (give indentation) 
+  say-hello:
+    # Creates an Ephermal Container with Ubuntu running
     runs-on: ubuntu-latest
+    # That ephermal container will have steps to execute, hence name those steps and use run: run has the command
     steps:
-      # this step will automatically clone the code of the current branch into the runner
-      - name: Checkout/Clone the code
-        uses: actions/checkout@v7
-      # this step will install python
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.14'
-      # this step will install the linting tool 
-      - name: Install Linter
-        run: pip install ruff
-      # this step will run the linter
-      - name: Check the files for linting
-        run: ruff check .
+      - name: Say hello to everyone
+        run: echo "Hello Dosto"
